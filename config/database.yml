@@ -13,8 +13,8 @@ default: &default
   adapter: mysql2
   encoding: utf8
   pool: 5
-  username: root
-  password: root
+  # username: root
+  # password: root
   socket: /var/run/mysqld/mysqld.sock
 
 development:
@@ -51,4 +51,4 @@ production:
   <<: *default
   database: Employ_contact_production
   username: Employ_contact
-  password: <%= ENV['EMPLOY_CONTACT_DATABASE_PASSWORD'] %>
+  password: <%= %>
