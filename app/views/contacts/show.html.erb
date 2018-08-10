@@ -1,0 +1,20 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @contact.name %>
+</p>
+
+<p>
+  <strong>Email:</strong>
+  <%= @contact.email %>
+</p>
+
+<p>
+  <strong>Contact List:</strong>
+  <% contact_list_map = ContactListMapping.find_by_contact_id(@contact.id).try(:contact_list_id) %>
+  <%= ContactList.find_by_id(contact_list_map).try(:name) %> </br>
+</p>
+
+<%= link_to 'Edit', edit_contact_path(@contact) %> |
+<%= link_to 'Back', contacts_path %>

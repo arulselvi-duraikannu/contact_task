@@ -1,0 +1,21 @@
+<p id="notice"><%= notice %></p>
+<p>
+  <strong> Name: &nbsp <%= @contact_list.name %> </strong>
+  <td><%= link_to 'Edit', edit_contact_list_path(@contact_list) %> |</td>
+  <td><%= link_to 'Back', contact_lists_path %> </td>
+</p>
+
+<p> <strong>Employee Details of <%= @contact_list.name %></strong> </P>
+<p> 
+  <% contact_list_mappings = ContactListMapping.where(contact_list_id: @contact_list.id).all %>
+  <table>
+  <tr> <td> Name </td> <td> Email </td>
+  <% contact_list_mappings.each do |contact_list_mapping| %>
+  <% contact = Contact.find_by_id(contact_list_mapping.contact_id) %>
+  <tr>
+  <td><%= contact.try(:name) %> </td>
+  <td><%= contact.try(:email) %> </td>
+  <% end %>
+</p>
+
+
